@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -e
+set -x
+
+cd /tmp
+
+echo 'Installing snowflake-jdbc 3.12.13...'
+wget -q -O snowflake-jdbc.jar 'https://search.maven.org/classic/remotecontent?filepath=net/snowflake/snowflake-jdbc/3.12.13/snowflake-jdbc-3.12.13.jar'
+mv snowflake-jdbc.jar /opt/snowflake-jdbc.jar
+echo 'snowflake-jdbc installed'
+
+cd ..

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -e
+set -x
+
+apt update
+
+apt install -y curl vim wget tar software-properties-common ssh net-tools ca-certificates jq build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev

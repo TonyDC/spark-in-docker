@@ -1,0 +1,20 @@
+#!/bin/bash
+
+set -e
+set -x
+
+. "/opt/spark/sbin/spark-config.sh"
+. "/opt/spark/bin/load-spark-env.sh"
+
+export SPARK_HOME="/opt/spark"
+
+mkdir -p $SPARK_WORKER_LOG
+
+ln -sf /dev/stdout $SPARK_WORKER_LOG/spark-worker.out
+
+/opt/spark/bin/spark-class org.apache.spark.deploy.worker.Worker \
+    --cores 2 \
+    --memory 1G \
+    --webui-port $SPARK_WORKER_WEBUI_PORT \
+    $SPARK_MASTER >> $SPARK_WORKER_LOG/spark-worker.out
+

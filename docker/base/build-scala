@@ -1,0 +1,18 @@
+#!/bin/bash
+
+set -e
+set -x
+
+cd /tmp
+
+echo "Installing scala-${SCALA_VERSION}..."
+wget --no-verbose "https://downloads.typesafe.com/scala/${SCALA_VERSION}/scala-${SCALA_VERSION}.tgz"
+tar xzf "scala-${SCALA_VERSION}.tgz"
+mkdir -p "${SCALA_HOME}"
+rm "/tmp/scala-${SCALA_VERSION}/bin/"*.bat
+mv "/tmp/scala-${SCALA_VERSION}/bin" "/tmp/scala-${SCALA_VERSION}/lib" "${SCALA_HOME}"
+ln -s "${SCALA_HOME}/bin/"* "/usr/bin/"
+rm -rf "/tmp/"*
+echo "scala-${SCALA_VERSION} installed"
+
+cd ..

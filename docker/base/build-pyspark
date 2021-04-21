@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -e
+set -x
+
+cd /tmp
+
+echo "Installing PySpark ${SPARK_VERSION}..."
+pip3 install "pyspark==${SPARK_VERSION}"
+echo "PySpark ${SPARK_VERSION} installed"
+
+cd ..

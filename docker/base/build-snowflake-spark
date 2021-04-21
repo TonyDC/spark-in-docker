@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -e
+set -x
+
+cd /tmp
+
+echo 'Installing snowflake-spark 2.8...'
+wget -q -O snowflake-spark.jar 'https://repo1.maven.org/maven2/net/snowflake/spark-snowflake_2.12/2.8.2-spark_3.0/spark-snowflake_2.12-2.8.2-spark_3.0.jar'
+mv snowflake-spark.jar /opt/snowflake-spark.jar
+echo 'snowflake-spark installed'
+
+cd ..
