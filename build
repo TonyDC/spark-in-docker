@@ -1,9 +1,13 @@
 #!/bin/bash
 
 set -e
+set -x
 
-[ ! -z "$DEPLOY_BASE" ] && docker build -t tonydc/spark-base:2.4.7 ./docker/base || true
-docker build -t tonydc/spark-master:2.4.7 ./docker/master
-docker build -t tonydc/spark-worker:2.4.7 ./docker/worker
-docker build -t tonydc/spark-submit:2.4.7 ./docker/submit
+if ! docker image inspect spark-base:2.4.7; then
+    docker build -t spark-base:2.4.7 ./docker/base
+fi
+
+docker build -t spark-master:2.4.7 ./docker/master
+docker build -t spark-worker:2.4.7 ./docker/worker
+docker build -t spark-submit:2.4.7 ./docker/submit
 

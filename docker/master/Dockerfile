@@ -1,4 +1,4 @@
-FROM tonydc/spark-base:2.4.7
+FROM spark-base:2.4.7
 
 WORKDIR /opt/master
 COPY ./start ./

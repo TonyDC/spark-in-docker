@@ -4,6 +4,6 @@
 --master ${SPARK_MASTER_URL} \
 --total-executor-cores 12 \
 --driver-memory 1g --num-executors 6 --executor-memory 1g --executor-cores 2 \
- ${SPARK_SUBMIT_ARGS} \
- ${SPARK_APPLICATION_JAR_LOCATION} \
- "$@"
+    ${SPARK_SUBMIT_ARGS} \
+    ${SPARK_APPLICATION_JAR_LOCATION} \
+    "$@"

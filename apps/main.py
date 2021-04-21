@@ -1,8 +1,9 @@
 import logging
 import sys
 
-from py4j.java_gateway import java_import
 from pyspark import SparkConf, sql
+
+from example import handler
 
 # Create logger
 logging.basicConfig(format='%(asctime)-15s %(levelname)s: %(message)s', level=logging.INFO)
@@ -26,24 +27,11 @@ spark = sql.SparkSession.builder \
 
 spark.sparkContext.setLogLevel("INFO")
 
-# Spark snowflake plugin configuration
-# Source: https://docs.snowflake.com/en/user-guide/spark-connector-use.html
-java_import(spark._jvm, "net.snowflake.spark.snowflake")
-
-spark._jvm \
-    .net.snowflake.spark.snowflake.SnowflakeConnectorUtils \
-    .enablePushdownSession(spark._jvm.org.apache.spark.sql.SparkSession.builder().getOrCreate())
-
 if __name__ == '__main__':
-    data_lake = sys.argv[1]
-    data_warehouse = sys.argv[2]
-    channel = sys.argv[3]
+    file = sys.argv[1]
 
     try:
-        res = handler(spark=spark,
-                      data_lake=data_lake,
-                      data_warehouse=data_warehouse,
-                      channel=channel)
+        res = handler(spark=spark, file=file)
         logger.info(f'Handler result: {res}')
     except Exception:
         logger.exception('Ingestion failed')

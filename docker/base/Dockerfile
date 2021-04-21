@@ -1,10 +1,10 @@
 FROM openjdk:8u212-b04-jdk-stretch
-LABEL author="Nathaniel Vala" email="nathanielvala@hotmail.com"
-LABEL version="0.2"
-LABEL source="https://github.com/mvillarrealb/docker-spark-cluster"
+LABEL author="TonyDC"
+LABEL version="0.1"
+LABEL source="https://github.com/TonyDC/spark-in-docker"
 
 ENV DAEMON_RUN=true
-ENV SPARK_VERSION=3.0.1
+ENV SPARK_VERSION=3.0.2
 ENV HADOOP_VERSION=2.7
 ENV SCALA_VERSION=2.12.12
 ENV SBT_VERSION=1.4.1

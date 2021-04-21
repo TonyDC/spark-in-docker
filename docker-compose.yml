@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   spark-master:
-    image: tonydc/spark-master:2.4.7
+    image: spark-master:2.4.7
     ports:
       - "9090:8080"
       - "7077:7077"
@@ -15,7 +15,7 @@ services:
     deploy:
       mode: global
   spark-worker:
-    image: tonydc/spark-worker:2.4.7
+    image: spark-worker:2.4.7
     depends_on:
       - spark-master
     environment:
@@ -33,7 +33,7 @@ services:
       mode: replicated
       replicas: 6
   spark-submit:
-    image: tonydc/spark-submit:2.4.7
+    image: spark-submit:2.4.7
     depends_on:
       - spark-master
       - spark-worker
